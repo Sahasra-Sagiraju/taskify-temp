@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+.introduction-custom {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  height: 300px;
+  padding: 50px;
+  border: 2px solid white;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.introduction-custom .introduction-image-custom {
+  animation: slideInImage 3s ease forwards;
+  align-items: center;
+  margin: auto auto;
+}
+
+.introduction-custom .intro-image-custom {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+@keyframes slideInImage {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInContent {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.introduction-custom .introduction-content-custom {
+  padding: 30px;
+  color: aliceblue;
+  border: 3px solid aliceblue;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto auto;
+  animation: slideInContent 3s ease forwards;
+}
+
+h1 {
+  padding: 20px;
+  margin: 10px;
+  color: aliceblue;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: aquamarine;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+  /* overflow: hidden; */
+}
+.introduction-custom2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  height: 300px;
+  padding: 50px;
+  border: 2px solid white;
+  margin: 30px;
+  border-radius: 10px;
+}
+.introduction-custom2 .introduction-image-custom {
+  animation: slideInImage 3s ease forwards;
+  align-items: center;
+  margin: auto auto;
+}
+
+.introduction-custom2 .intro-image-custom {
+  max-height: 100%;
+  max-width: 100%;
+}
+.introduction-custom2 .introduction-content-custom {
+  padding: 30px;
+  color: aliceblue;
+  border: 3px solid aliceblue;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto auto;
+  animation: slideInContent 3s ease forwards;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

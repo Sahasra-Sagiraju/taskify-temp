@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskify</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="logo.png" alt="" />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">Taskify</span>
+            <span class="profession">Track Progress</span>
+          </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="dashboard.html" onclick="loadContent('dashboard.html')">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="mytasks.html" onclick="loadContent('mytasks.html')">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">My Tasks</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a
+                href="urgenttasks.html"
+                onclick="loadContent('urgenttasks.html')"
+              >
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Urgent Tasks</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="addtask.html" onclick="loadContent('addtask.html')">
+                <i class="bx bx-wallet icon"></i>
+                <span class="text nav-text">Add Task</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+      <div class="text">Add Task</div>
+      <div class="addtask-container">
+        <div class="form-custom">
+          <!-- <form> -->
+          <div class="taskname">
+            <label for="tname">Enter Task Name:</label><br />
+            <input
+              type="text"
+              class="field"
+              id="tname"
+              name="tname"
+              placeholder="task name"
+            /><br />
+          </div>
+
+          <div class="description">
+            <label for="desc">Enter a description(optional):</label><br />
+            <input
+              type="text"
+              class="field"
+              id="desc"
+              name="desc"
+              placeholder="description"
+            /><br />
+          </div>
+
+          <div class="subtask">
+            <label for="subtask">Enter SubTask(optional):</label><br />
+            <input
+              type="text"
+              class="field"
+              id="subtask"
+              name="subtask"
+              placeholder="sub task"
+            /><br />
+          </div>
+
+          <div class="start-date">
+            <label for="sdate">Enter the start date:</label><br />
+            <input
+              type="date"
+              class="field"
+              id="sdate"
+              name="sdate"
+              placeholder="start date"
+            /><br />
+          </div>
+
+          <div class="end-date">
+            <label for="edate">Enter the end date:</label><br />
+            <input
+              type="date"
+              class="field"
+              id="edate"
+              name="edate"
+              placeholder="end date"
+            /><br />
+          </div>
+
+          <div class="custom-category">
+            <label for="customc">custom category:</label><br />
+            <input
+              type="text"
+              class="field"
+              id="customc"
+              name="customc"
+              placeholder="custom category"
+            /><br />
+          </div>
+
+          <!-- </form> -->
+        </div>
+
+        <div class="priority">
+          <label for="priority-checkbox" id="priority-name"
+            >Choose periodicity (optional)
+          </label>
+          <input
+            class="prb"
+            type="radio"
+            id="option1"
+            name="prior"
+            value="daily"
+          />
+          <label for="option1">daily</label>
+          <input
+            class="prb"
+            type="radio"
+            id="option2"
+            name="prior"
+            value="weekly"
+          />
+          <label for="option2">weekly</label>
+          <input
+            class="prb"
+            type="radio"
+            id="option3"
+            name="prior"
+            value="biweekly"
+          />
+          <label for="option3">biweekly</label>
+          <input
+            class="prb"
+            type="radio"
+            id="option4"
+            name="prior"
+            value="monthly"
+          />
+          <label for="option4">monthly</label>
+        </div>
+
+        <div class="priority-date-picker">
+          <!-- <label for="priority-date-picker__input"
+            >Pick a date:
+            <input
+              id="priority-date-picker__input"
+              type="date"
+              min="2024-02-27"
+          /></label>
+          <label for="priority-date-picker__input-1">
+            Pick 2nd date:
+            <input
+              id="priority-date-picker__input-1"
+              type="date"
+              min="2024-02-27"
+            /> -->
+          </label>
+        </div>
+
+        <div class="recurring-period">
+          <label for="recurring-period-checkbox" id="recurring-period-name"
+            >Choose recurring period (optional)</label
+          >
+          <input
+            class="rpc"
+            type="radio"
+            id="opt-long"
+            name="term"
+            value="long-term"
+          />
+          <label for="opt-long">long term</label>
+          <input
+            class="rpc"
+            type="radio"
+            id="opt-short"
+            name="term"
+            value="short-term"
+          />
+          <label for="opt-short">short term</label>
+        </div>
+
+        <div class="duration-type">
+          <label for="priority-dropdown" id="task-priority"
+            >Priority of the task:</label
+          >
+          <select name="priority" id="priority">
+            <option value="">Select</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+        <div class="addbutton">
+          <button type="button" id="addb">Add Task</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="toggleTheme.js"></script>
+    <script type="module" src="addTask.js"></script>
+  </body>
+</html>

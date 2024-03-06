@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text {
+  margin-bottom: 10px;
+}
+
+.urgent-tasks-details {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 1fr 1fr;
+  margin-inline: 30px;
+  gap: 10px;
+  color: var(--text-color);
+  border-top: 2px solid var(--text-color);
+}
+
+.urgent-tasks-container .urgent-tasks {
+  padding: 5px;
+  margin: 20px;
+  /* border: 2px solid black; */
+  text-align: center;
+}
+
+.urgent-tasks-container #details-button button {
+  background-color: #45a2a9;
+  width: 50%;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+.urgent-tasks-container #sno {
+  width: 40px;
+  height: 40px;
+  background-color: #45a2a9;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
+
+.urgent-tasks-container #urgent-task-name {
+  text-align: left;
+  margin-left: 0px;
+}
+
+.urgent-tasks-container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.urgent-tasks-container .details-btn {
+  align-self: center;
+  justify-self: center;
+}
+
+/* .tag-high {
+  background-color: rgb(246, 211, 211);
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  color: rgb(219, 37, 37);
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+}
+
+.tag-medium {
+  background-color: rgb(255, 237, 186);
+  color: rgb(180, 118, 3);
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+}
+
+.tag-low {
+  background-color: rgb(203, 255, 203);
+  color: rgb(58, 150, 58);
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+} */
+
+.tag-high {
+  background-color: maroon;
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+}
+
+.tag-medium {
+  background-color: darkorange;
+  color: white;
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+}
+
+.tag-low {
+  background-color: green;
+  color: white;
+  border-radius: 30px;
+  border: 1px solid transperant;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  margin: 20px;
+}

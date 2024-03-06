@@ -1,0 +1,30 @@
+dialog {
+  padding: 20px;
+  border-radius: 11px;
+  place-self: center;
+  border: none;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.25),
+    -5px -5px 10px 5px rgba(0, 0, 0, 0.25);
+}
+
+.dialog::backdrop {
+  background: gray;
+  opacity: 0.5;
+}
+
+dialog > div {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.no-btn {
+  margin-left: auto;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+
+.yes-btn {
+  padding: 3px 8px;
+  cursor: pointer;
+}

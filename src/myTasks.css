@@ -1,0 +1,8 @@
+button {
+  align-self: center;
+  justify-self: center;
+}
+
+.tasks-details {
+  grid-template-columns: 0.25fr 1fr 1fr 1fr !important;
+}
