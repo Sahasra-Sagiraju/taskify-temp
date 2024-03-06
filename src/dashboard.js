@@ -56,8 +56,15 @@ const groupTasks = (tasksArray) => {
       "DD/MM/YYYY"
     );
     const endDate = moment(moment(task.endDate, "YYYY/MM/DD"), "DD/MM/YYYY");
+    const tomorrowDate = moment(
+      moment().add(1, "days").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
 
-    return startDate <= tomorrowDate && tomorrowDate <= endDate;
+    return (
+      tomorrowDate.isBetween(startDate, endDate, "[]") &&
+      task.progressEachDay.hasOwnProperty(tomorrowDate._i)
+    );
   });
 
   const thisWeekTasks = tasksArray.filter((task) => {
