@@ -205,55 +205,58 @@ btnAddTask.addEventListener("click", () => {
   const progressEachDay = {};
   switch (priority) {
     case "daily":
-      let date = new Date(startDate);
-      let lastDate = new Date(endDate);
-      while (date <= lastDate) {
-        const formattedDate = date
-          .toLocaleDateString()
-          .split("/")
-          .map((s) => s.padStart(2, "0"))
-          .join("/");
-        progressEachDay[formattedDate] = 0;
-        date.setDate(date.getDate() + 1);
+      let date = moment(
+        moment(startDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      let lastDate = moment(
+        moment(endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+
+      console.log(date);
+      console.log(lastDate);
+
+      while (date.isSameOrBefore(lastDate)) {
+        progressEachDay[date.format("DD/MM/YYYY")] = 0;
+        date.add(1, "days");
       }
       break;
     case "weekly": {
-      let date = new Date(pickedFirstStartDate);
-      let lastDate = new Date(endDate);
-      while (date <= lastDate) {
-        const formattedDate = date
-          .toLocaleDateString()
-          .split("/")
-          .map((s) => s.padStart(2, "0"))
-          .join("/");
-        progressEachDay[formattedDate] = 0;
-        date.setDate(date.getDate() + 7);
+      let date = moment(
+        moment(pickedFirstStartDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      let lastDate = moment(
+        moment(endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      while (date.isSameOrBefore(lastDate)) {
+        progressEachDay[date.format("DD/MM/YYYY")] = 0;
+        date.add(7, "days");
       }
       break;
     }
     case "biweekly": {
-      let firstDate = new Date(pickedFirstStartDate);
-      let secondDate = new Date(pickedSecondStartDate);
-      console.log(firstDate);
-      console.log(pickedSecondStartDate);
-      let lastDate = new Date(endDate);
-      while (firstDate <= lastDate) {
-        const formattedDate = firstDate
-          .toLocaleDateString()
-          .split("/")
-          .map((s) => s.padStart(2, "0"))
-          .join("/");
-        progressEachDay[formattedDate] = 0;
-        firstDate.setDate(firstDate.getDate() + 7);
+      let firstDate = moment(
+        moment(pickedFirstStartDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      let secondDate = moment(
+        moment(pickedSecondStartDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      let lastDate = moment(
+        moment(endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+        "DD/MM/YYYY"
+      );
+      while (firstDate.isSameOrBefore(lastDate)) {
+        progressEachDay[firstDate.format("DD/MM/YYYY")] = 0;
+        firstDate.add(7, "days");
       }
-      while (secondDate <= lastDate) {
-        const formattedDate = secondDate
-          .toLocaleDateString()
-          .split("/")
-          .map((s) => s.padStart(2, "0"))
-          .join("/");
-        progressEachDay[formattedDate] = 0;
-        secondDate.setDate(secondDate.getDate() + 7);
+      while (secondDate.isSameOrBefore(lastDate)) {
+        progressEachDay[secondDate.format("DD/MM/YYYY")] = 0;
+        secondDate.addDays(7, "days");
       }
       break;
     }

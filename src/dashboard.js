@@ -38,57 +38,72 @@ const groupTasks = (tasksArray) => {
 
   const todayTasks = tasksArray.filter((task) => {
     const startDate = moment(
-      moment(task.startDate, "YYYY/MM/DD"),
+      moment(task.startDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
       "DD/MM/YYYY"
     );
-    const endDate = moment(moment(task.endDate, "YYYY/MM/DD"), "DD/MM/YYYY");
+    const endDate = moment(
+      moment(task.endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
     const currentDate = moment(moment().format("DD/MM/YYYY"), "DD/MM/YYYY");
+
     return (
       startDate.isSameOrBefore(currentDate) &&
       currentDate.isSameOrBefore(endDate) &&
-      task.progressEachDay.hasOwnProperty(currentDate._i)
+      task.progressEachDay.hasOwnProperty(currentDate.format("DD/MM/YYYY"))
     );
   });
 
   const nextDayTasks = tasksArray.filter((task) => {
-    // const startDate = new Date(task.startDate);
-    // const endDate = new Date(task.endDate);
-    // const tomorrowDate = new Date();
-    // tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-    // resetTimeForDates(startDate, tomorrowDate, endDate);
     const startDate = moment(
-      moment(task.startDate, "YYYY/MM/DD"),
+      moment(task.startDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
       "DD/MM/YYYY"
     );
-    const endDate = moment(moment(task.endDate, "YYYY/MM/DD"), "DD/MM/YYYY");
+    const endDate = moment(
+      moment(task.endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
     const tomorrowDate = moment(
       moment().add(1, "days").format("DD/MM/YYYY"),
       "DD/MM/YYYY"
     );
 
     return (
-      tomorrowDate.isBetween(startDate, endDate, "[]") &&
-      task.progressEachDay.hasOwnProperty(tomorrowDate._i)
+      startDate.isSameOrBefore(tomorrowDate) &&
+      tomorrowDate.isSameOrBefore(endDate) &&
+      task.progressEachDay.hasOwnProperty(tomorrowDate.format("DD/MM/YYYY"))
     );
   });
 
   const thisWeekTasks = tasksArray.filter((task) => {
-    const startDate = new Date(task.startDate);
-    const endDate = new Date(task.endDate);
-    const thisWeekCurrentDate = new Date();
-    const thisWeekEndDate = new Date();
-    thisWeekEndDate.setDate(
-      thisWeekEndDate.getDate() + remDays(thisWeekEndDate.getDay()) - 1
+    const startDate = moment(
+      moment(task.startDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
+    const endDate = moment(
+      moment(task.endDate, "YYYY-MM-DD").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
+    const thisWeekCurrentDate = moment(
+      moment().startOf("day").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
+    );
+    const thisWeekEndDate = moment(
+      moment(thisWeekCurrentDate).endOf("week").format("DD/MM/YYYY"),
+      "DD/MM/YYYY"
     );
 
-    resetTimeForDates(startDate, thisWeekCurrentDate, endDate);
-    resetTimeForDates(startDate, thisWeekEndDate, endDate);
-
-    while (thisWeekCurrentDate <= thisWeekEndDate) {
-      if (startDate <= thisWeekCurrentDate && thisWeekCurrentDate <= endDate) {
+    while (thisWeekCurrentDate.isSameOrBefore(thisWeekEndDate)) {
+      if (
+        startDate.isSameOrBefore(thisWeekCurrentDate) &&
+        thisWeekCurrentDate.isSameOrBefore(endDate) &&
+        task.progressEachDay.hasOwnProperty(
+          thisWeekCurrentDate.format("DD/MM/YYYY")
+        )
+      ) {
         return true;
       }
-      thisWeekCurrentDate.setDate(thisWeekCurrentDate.getDate() + 1);
+      thisWeekCurrentDate.add(1, "day");
     }
 
     return false;
@@ -453,8 +468,7 @@ const constructGraph = async (task) => {
   const data = Object.keys(task.progressEachDay)
     .map((date) => ({
       date,
-      progress:
-        task.progressEachDay[date] === null ? 0 : task.progressEachDay[date],
+      progress: task.progressEachDay[date],
     }))
     .filter((obj) =>
       moment(obj.date).isSameOrBefore(moment().format("DD/MM/YYYY"))

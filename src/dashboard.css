@@ -355,6 +355,10 @@ body.dark .home .text {
   align-items: center;
 }
 
+.fix-flex {
+  display: flex;
+}
+
 .progress-container {
   display: flex;
   flex-direction: column;
