@@ -14,6 +14,7 @@ const priorityDiv = document.querySelector(".priority");
 const priorityRadioArray = Array.from(document.querySelectorAll(".prb"));
 const priorityDatePicker = document.querySelector(".priority-date-picker");
 const recurringPeriodArray = Array.from(document.querySelectorAll(".rpc"));
+console.log(recurringPeriodArray);
 const durationType = document.querySelector("#priority");
 
 let taskName = "";
@@ -22,9 +23,7 @@ let subTask = "";
 let startDate = "";
 let endDate = "";
 let pickedFirstStartDate = "";
-let pickedFirstEndDate = "";
 let pickedSecondStartDate = "";
-let pickedSecondEndDate = "";
 let customCategory = "";
 let priority = "";
 let duration = "";
@@ -63,9 +62,7 @@ const resetForm = () => {
   startDate = "";
   endDate = "";
   pickedFirstStartDate = "";
-  pickedFirstEndDate = "";
   pickedSecondStartDate = "";
-  pickedSecondEndDate = "";
   customCategory = "";
   priority = "";
   duration = "";
@@ -218,6 +215,8 @@ btnAddTask.addEventListener("click", () => {
     case "biweekly": {
       let firstDate = new Date(pickedFirstStartDate);
       let secondDate = new Date(pickedSecondStartDate);
+      console.log(firstDate);
+      console.log(pickedSecondStartDate);
       let lastDate = new Date(endDate);
       while (firstDate <= lastDate) {
         const formattedDate = firstDate
@@ -284,11 +283,12 @@ priorityDatePicker.addEventListener("change", () => {
   const datePickerArray = Array.from(priorityDatePicker.children).map(
     (labelChild) => Array.from(labelChild.children)[0]
   );
-
+  console.log(datePickerArray);
   if (datePickerArray.length === 1) {
     pickedFirstStartDate = datePickerArray[0].value;
   } else {
+    console.log("I'm here");
     pickedFirstStartDate = datePickerArray[0].value;
-    pickedSecondEndDate = datePickerArray[1].value;
+    pickedSecondStartDate = datePickerArray[1].value;
   }
 });
