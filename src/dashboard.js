@@ -231,12 +231,25 @@ const getStreak = (task) => {
   return count;
 };
 
+const getMissedDaysCount = (task) => {
+  let count = 0;
+  for (const key in task.progressEachDay) {
+    const date = moment(key, "DD/MM/YYYY");
+    const today = moment();
+    if (date.isBefore(today) && task.progressEachDay[date] === 0) {
+      ++count;
+    }
+  }
+  return count;
+};
+
 const getProgressTillDate = (task) => {
   let totalProgress = 0;
   let count = 0;
   for (const key in task.progressEachDay) {
     const date = moment(key, "DD/MM/YYYY");
     const today = moment();
+    console.log(date, today);
     if (date.isSameOrBefore(today)) {
       ++count;
     }
@@ -350,7 +363,9 @@ const renderDetailsCard = (sNo, task) => {
         </div>
         <div class="details-box__tags-table-item">
           <span class="details-box__property">Missed:</span>
-          <span class="details-box__property-value details-tag">0</span>
+          <span class="details-box__property-value details-tag">${getMissedDaysCount(
+            task
+          )}</span>
         </div>
       </div>
 

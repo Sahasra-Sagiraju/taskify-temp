@@ -29,6 +29,15 @@ let priority = "";
 let duration = "";
 let progressEachDay = {};
 
+inputStartDate.setAttribute(
+  "min",
+  `${moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD")._i}`
+);
+inputEndDate.setAttribute(
+  "min",
+  `${moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD")._i}`
+);
+
 function getMonthlyDates(pickedFirstStartDate, endDate) {
   const startMoment = moment(pickedFirstStartDate);
   const endMoment = moment(endDate);
