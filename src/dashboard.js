@@ -31,6 +31,11 @@ const resetTimeForDates = (startDate, testDate, endDate) => {
 
 // Main code
 const groupTasks = (tasksArray) => {
+  console.log(tasksArray);
+  if (tasksArray.length === 0) {
+    return [[], [], []];
+  }
+
   const todayTasks = tasksArray.filter((task) => {
     const startDate = moment(
       moment(task.startDate, "YYYY/MM/DD"),
@@ -94,6 +99,7 @@ const groupTasks = (tasksArray) => {
 
 const updateDashboard = () => {
   const tasksArray = JSON.parse(localStorage.getItem("tasks"));
+  console.log(tasksArray);
   const [todayTasks, nextDayTasks, thisWeekTasks] = groupTasks(tasksArray);
 
   todaysTasksContainer.innerHTML = "";

@@ -66,6 +66,7 @@ const getProgressTillDate = (task) => {
     }
   }
 
+  // console.log(task);
   // const possibleProgress = count * 100;
   const possibleProgress = Object.keys(task.progressEachDay).length * 100;
   const totalProgressPercentage = (totalProgress / possibleProgress) * 100;
