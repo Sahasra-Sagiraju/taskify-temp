@@ -286,6 +286,8 @@ const renderDetailsCard = (sNo, task) => {
     progressEachDay,
   } = task;
 
+  const subtasksArray = subTask.split(",").map((subtask) => subtask.trim());
+
   detailsBox.innerHTML = "";
   detailsBox.insertAdjacentHTML(
     "beforeend",
@@ -373,12 +375,16 @@ const renderDetailsCard = (sNo, task) => {
       <div class="details-box__subtasks-table">
         <span class="details-box__property">Subtasks:</span>
         <div class="details-box__subtasks-table-items">
-          <div class="details-box__subtasks-table-item">
-            <i class="bx bx-check-square" style="color: #0e8c87"></i>
-            <span class="subtask-item">
-              ${subTask}
-            </span>
-          </div>
+          ${subtasksArray
+            .map((subtask) => {
+              return `<div class="details-box__subtasks-table-item">
+                        <i class="bx bx-check-square" style="color: #0e8c87"></i>
+                        <span class="subtask-item">
+                          ${subtask}
+                        </span>
+                      </div>`;
+            })
+            .join("")}
         </div>
       </div>
 
@@ -398,6 +404,17 @@ const renderDetailsCard = (sNo, task) => {
   </div>
     `
   );
+
+  /*
+
+  <div class="details-box__subtasks-table-item">
+            <i class="bx bx-check-square" style="color: #0e8c87"></i>
+            <span class="subtask-item">
+              ${subTask}
+            </span>
+          </div>
+
+  */
 
   const backBtn = document.querySelector(".details-box__back-btn");
 
