@@ -7,11 +7,9 @@
 }
 
 .details-box {
-  /* height: 85vh; */
   max-width: 1080px;
   margin: 0 auto;
   margin-top: 20px;
-  /* background-color: orangered; */
   border-radius: 30px;
   overflow: hidden;
   color: white;
@@ -20,10 +18,8 @@
 
 .details-box__header {
   display: flex;
-  /* background: blue; */
   padding-inline: 20px;
   padding-top: 25px;
-  /* padding: 10px 20px; */
 }
 
 .details-box__header i {
