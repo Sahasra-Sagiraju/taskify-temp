@@ -1,4 +1,6 @@
 const moment = require("moment");
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
 
 if (localStorage.getItem("tasks") === null) {
   localStorage.setItem("tasks", "[]");
@@ -14,8 +16,16 @@ const priorityDiv = document.querySelector(".priority");
 const priorityRadioArray = Array.from(document.querySelectorAll(".prb"));
 const priorityDatePicker = document.querySelector(".priority-date-picker");
 const recurringPeriodArray = Array.from(document.querySelectorAll(".rpc"));
-console.log(recurringPeriodArray);
+const infoSubtaskEntity = document.querySelector(".info-subtask");
 const durationType = document.querySelector("#priority");
+
+tippy(".info-subtask", {
+  content: "To add multiple subtasks, separate them with commas",
+  placement: "top-start",
+  arrow: true,
+  animation: "shift-away-subtle",
+  theme: "light",
+});
 
 let taskName = "";
 let taskDesc = "";
