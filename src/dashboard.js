@@ -133,7 +133,9 @@ const updateDashboard = () => {
                 <i class='bx bx-calendar' style='color:#118d98; font-size: 25px;'></i>
                   <span>${startDate}</span>
                 </div>
-                <span>${subTask}</span>
+                <span class="details__subtask">${
+                  subTask.length <= 40 ? subTask : subTask.slice(0, 38) + "..."
+                }</span>
                 <span>${customCategory}</span>
               </div>
             </div>
