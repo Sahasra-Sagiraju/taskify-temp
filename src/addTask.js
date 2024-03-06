@@ -256,7 +256,7 @@ btnAddTask.addEventListener("click", () => {
       }
       while (secondDate.isSameOrBefore(lastDate)) {
         progressEachDay[secondDate.format("DD/MM/YYYY")] = 0;
-        secondDate.addDays(7, "days");
+        secondDate.add(7, "days");
       }
       break;
     }
